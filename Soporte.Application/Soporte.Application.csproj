@@ -20,4 +20,14 @@
     <ProjectReference Include="..\Soporte.Domain\Soporte.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Behaviours\" />
+    <Folder Include="Contracts\Infrastructure\" />
+    <Folder Include="Contracts\Persistence\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Features\" />
+    <Folder Include="Mappings\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>
