@@ -2,7 +2,7 @@
 
 namespace Soporte.Application.Exceptions;
 
-internal class ValidationException : ApplicationException
+public class ValidationException : ApplicationException
 {
     public ValidationException() : base("Se presentaron uno o mas errores de validacion")
     {

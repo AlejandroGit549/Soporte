@@ -40,19 +40,24 @@ public partial class AplicacionesContext : DbContext
     {
         modelBuilder.Entity<Cliente>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Cliente__3214EC079F630137");
+            entity.HasKey(e => e.Id).HasName("PK__Cliente__3214EC072DB15E78");
 
             entity.ToTable("Cliente", "Soporte");
 
-            entity.HasIndex(e => e.Email, "UQ__Cliente__A9D105348A6F6358").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Cliente__A9D10534F0DF6EC1").IsUnique();
 
+            entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.Email).HasMaxLength(255);
+            entity.Property(e => e.FechaCreacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.FechaModificacion).HasColumnType("datetime");
             entity.Property(e => e.Nombre).HasMaxLength(255);
         });
 
         modelBuilder.Entity<Comentario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Comentar__3214EC0751EA7B6D");
+            entity.HasKey(e => e.Id).HasName("PK__Comentar__3214EC07CEA225A2");
 
             entity.ToTable("Comentario", "Soporte");
 
@@ -74,12 +79,17 @@ public partial class AplicacionesContext : DbContext
 
         modelBuilder.Entity<Estado>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Estado__3214EC07360CA79F");
+            entity.HasKey(e => e.Id).HasName("PK__Estado__3214EC07F32E28E6");
 
             entity.ToTable("Estado", "Soporte");
 
-            entity.HasIndex(e => e.Nombre, "UQ__Estado__75E3EFCFC95BAE0D").IsUnique();
+            entity.HasIndex(e => e.Nombre, "UQ__Estado__75E3EFCF5BE1A4D5").IsUnique();
 
+            entity.Property(e => e.Activo).HasDefaultValue(true);
+            entity.Property(e => e.FechaCreacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.FechaModificacion).HasColumnType("datetime");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(20)
                 .IsUnicode(false);
@@ -87,7 +97,7 @@ public partial class AplicacionesContext : DbContext
 
         modelBuilder.Entity<HistorialEstado>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Historia__3214EC0798165F97");
+            entity.HasKey(e => e.Id).HasName("PK__Historia__3214EC0752FD5FF7");
 
             entity.ToTable("HistorialEstados", "Soporte");
 
@@ -118,12 +128,17 @@ public partial class AplicacionesContext : DbContext
 
         modelBuilder.Entity<Prioridad>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Priorida__3214EC073748226E");
+            entity.HasKey(e => e.Id).HasName("PK__Priorida__3214EC07F85D3A41");
 
             entity.ToTable("Prioridad", "Soporte");
 
-            entity.HasIndex(e => e.Nombre, "UQ__Priorida__75E3EFCFEFD0521F").IsUnique();
+            entity.HasIndex(e => e.Nombre, "UQ__Priorida__75E3EFCFFC92378F").IsUnique();
 
+            entity.Property(e => e.Activo).HasDefaultValue(true);
+            entity.Property(e => e.FechaCreacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.FechaModificacion).HasColumnType("datetime");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(10)
                 .IsUnicode(false);
@@ -131,21 +146,31 @@ public partial class AplicacionesContext : DbContext
 
         modelBuilder.Entity<Proyecto>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Proyecto__3214EC0747DD99E7");
+            entity.HasKey(e => e.Id).HasName("PK__Proyecto__3214EC07378B96C1");
 
             entity.ToTable("Proyecto", "Soporte");
 
+            entity.Property(e => e.Activo).HasDefaultValue(true);
+            entity.Property(e => e.FechaCreacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.FechaModificacion).HasColumnType("datetime");
             entity.Property(e => e.Nombre).HasMaxLength(255);
         });
 
         modelBuilder.Entity<Rol>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Rol__3214EC07928E7435");
+            entity.HasKey(e => e.Id).HasName("PK__Rol__3214EC074D6B3230");
 
             entity.ToTable("Rol", "Soporte");
 
-            entity.HasIndex(e => e.Nombre, "UQ__Rol__75E3EFCFF522EA52").IsUnique();
+            entity.HasIndex(e => e.Nombre, "UQ__Rol__75E3EFCF051C5921").IsUnique();
 
+            entity.Property(e => e.Activo).HasDefaultValue(true);
+            entity.Property(e => e.FechaCreacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.FechaModificacion).HasColumnType("datetime");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(20)
                 .IsUnicode(false);
@@ -153,7 +178,7 @@ public partial class AplicacionesContext : DbContext
 
         modelBuilder.Entity<SeguimientoTiempo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Seguimie__3214EC07588282D4");
+            entity.HasKey(e => e.Id).HasName("PK__Seguimie__3214EC07F4F49324");
 
             entity.ToTable("SeguimientoTiempo", "Soporte");
 
@@ -170,7 +195,7 @@ public partial class AplicacionesContext : DbContext
 
         modelBuilder.Entity<Ticket>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Ticket__3214EC07D42700A5");
+            entity.HasKey(e => e.Id).HasName("PK__Ticket__3214EC07569AC705");
 
             entity.ToTable("Ticket", "Soporte");
 
@@ -216,11 +241,11 @@ public partial class AplicacionesContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Usuario__3214EC0781A664B8");
+            entity.HasKey(e => e.Id).HasName("PK__Usuario__3214EC07BFE83EC3");
 
             entity.ToTable("Usuario", "Soporte");
 
-            entity.HasIndex(e => e.Email, "UQ__Usuario__A9D10534E94F81AD").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Usuario__A9D10534793C8622").IsUnique();
 
             entity.Property(e => e.Email).HasMaxLength(255);
             entity.Property(e => e.Nombre).HasMaxLength(255);

@@ -9,6 +9,16 @@ public partial class Estado
 
     public string Nombre { get; set; } = null!;
 
+    public bool Activo { get; set; }
+
+    public DateTime? FechaCreacion { get; set; }
+
+    public int CreadoPor { get; set; }
+
+    public DateTime? FechaModificacion { get; set; }
+
+    public int? ModificadoPor { get; set; }
+
     public virtual ICollection<HistorialEstado> HistorialEstadoEstadoAnteriors { get; set; } = new List<HistorialEstado>();
 
     public virtual ICollection<HistorialEstado> HistorialEstadoEstadoNuevos { get; set; } = new List<HistorialEstado>();
