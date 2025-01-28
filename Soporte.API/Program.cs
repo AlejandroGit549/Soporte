@@ -1,8 +1,20 @@
+using Serilog.Events;
+using Serilog;
 using Soporte.API.Middleware;
 using Soporte.Application;
 using Soporte.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug() // Nivel mínimo de logs
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information) // Filtra logs de Microsoft
+    .Enrich.FromLogContext() // Enriquecer logs con contexto
+    .WriteTo.Console() // Escribe logs en la consola
+    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day) // Escribe logs en archivos
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 // Add services to the container.
 
@@ -20,6 +32,8 @@ builder.Services.AddCors(options =>
     .AllowAnyHeader()
     );
 });
+
+
 
 
 var app = builder.Build();

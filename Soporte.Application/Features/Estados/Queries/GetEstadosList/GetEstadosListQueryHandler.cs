@@ -25,10 +25,10 @@ public class GetEstadosListQueryHandler : IRequestHandler<GetEstadosListQuery, R
     {
         var estadosList = await _unitOfWork.Repository<Estado>().GetAsync(p => p.Activo == true);
         var estadosVM = Getlist(estadosList.ToList());
-        if (estadosVM.Any())
+        if (!estadosVM.Any())
             return new Response<List<EstadoVM>> { Data = estadosVM.ToList(), Success = false, Message = "No se encontro información.", StatusCode = (short)HttpStatusCode.OK };
 
-        return new Response<List<EstadoVM>> { Data = estadosVM.ToList(), Success = false, Message = "Éxito al obtener información.", StatusCode = (short)HttpStatusCode.OK };
+        return new Response<List<EstadoVM>> { Data = estadosVM.ToList(), Success = true, Message = "Éxito al obtener información.", StatusCode = (short)HttpStatusCode.OK };
     }
 
     private IEnumerable<EstadoVM> Getlist(IEnumerable<Estado> estados)

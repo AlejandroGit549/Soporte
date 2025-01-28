@@ -22,7 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Estados\Commands\" />
+    <Folder Include="Features\Estados\Commands\DeleteEstado\" />
+    <Folder Include="Features\Estados\Commands\UpdateEstado\" />
   </ItemGroup>
 
 </Project>
