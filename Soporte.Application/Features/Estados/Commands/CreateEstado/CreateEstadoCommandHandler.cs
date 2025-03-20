@@ -31,7 +31,7 @@ public class CreateEstadoCommandHandler : IRequestHandler<CreateEstadoCommand, R
             Activo = true,
             FechaCreacion = DateTime.Now
         };
-        _unitOfWork.Repository<Estado>().AddEntity(estadoEntity);
+        _unitOfWork.EstadoRespository.AddEntity(estadoEntity);
 
         var result = await _unitOfWork.Complete();
         if(result <= 0)

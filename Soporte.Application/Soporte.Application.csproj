@@ -21,9 +21,4 @@
     <ProjectReference Include="..\Soporte.Domain\Soporte.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Estados\Commands\DeleteEstado\" />
-    <Folder Include="Features\Estados\Commands\UpdateEstado\" />
-  </ItemGroup>
-
 </Project>

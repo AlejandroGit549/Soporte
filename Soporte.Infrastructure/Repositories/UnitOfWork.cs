@@ -9,6 +9,9 @@ public class UnitOfWork : IUnitOfWork
     private Hashtable _repositories;
     private readonly AplicacionesContext _context;
 
+    private IEstadoRespository _estadoRespository;
+
+    public IEstadoRespository EstadoRespository => _estadoRespository ??= new EstadoRespository(_context);
 
     public UnitOfWork(AplicacionesContext context)
     {
